@@ -7,12 +7,23 @@ export default class TabContent2 extends Component {
     super();
     this.state={
       value : "" ,
-      List : [] 
+      List : [] ,
+      visibility : "hidden" ,
+      education : "" ,
+      ostan : "" ,
+      disable : true ,
     }
     this.submit = this.submit.bind(this)
+    this.visablecity = this.visablecity.bind(this)
   }
   submit(e){
     this.setState({ List: [...this.state.List , e.target.value] , value: "" })
+  }
+  visablecity(){
+        this.setState({ disable : false })
+  }
+  visablecitystudy(){
+    this.setState({ visibility : "visible"})
   }
   render() {
     return (
@@ -37,19 +48,38 @@ export default class TabContent2 extends Component {
               <Col>
                 <Form.Control 
                   style={{backgroundColor : "rgb(32, 49, 59" ,  color : "wight" , marginTop : "12%"}} 
-                  placeholder="تحصیلات" 
+                  placeholder="تحصیلات" onChange={(e) => (e.target.value)?this.visablecitystudy:""}
+                />
+              </Col>
+              <Col>
+                <Form.Control 
+                  style={{
+                    backgroundColor : "rgb(32, 49, 59" ,
+                    color : "wight" , 
+                    marginTop : "12%" , 
+                    visibility : this.state.visibility
+                  }} 
+                  placeholder="شهر محل تحصیل"  
+                />
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <Form.Control 
+                  style={{backgroundColor : "rgb(32, 49, 59" ,  color : "wight" , marginTop : "12%"}} 
+                  placeholder="استان"  onChange={(e) => (e.target.value)?this.visablecity:""}
                 />
               </Col>
               <Col>
                 <Form.Control 
                   style={{backgroundColor : "rgb(32, 49, 59" ,  color : "wight" , marginTop : "12%"}} 
-                  placeholder="استان"
+                  placeholder="شهر"   disabled={this.state.disable}
                 />
               </Col>
               <Col>
                 <Form.Control 
                   style={{backgroundColor : "rgb(32, 49, 59" ,  color : "wight" , marginTop : "12%"}} 
-                  placeholder="محل تولد"
+                  placeholder="شهر محل تولد"  type=''
                 />
               </Col>
             </Row>
