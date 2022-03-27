@@ -15,6 +15,7 @@ export default class TabContent2 extends Component {
     }
     this.submit = this.submit.bind(this)
     this.visablecity = this.visablecity.bind(this)
+    this.city = this.city.bind(this)
   }
   submit(e){
     this.setState({ List: [...this.state.List , e.target.value] , value: "" })
@@ -24,6 +25,9 @@ export default class TabContent2 extends Component {
   }
   visablecitystudy(){
     this.setState({ visibility : "visible"})
+  }
+  city(){
+    fetch("./iranstates.json").then
   }
   render() {
     return (
@@ -65,16 +69,52 @@ export default class TabContent2 extends Component {
             </Row>
             <Row>
               <Col>
-                <Form.Control 
-                  style={{backgroundColor : "rgb(32, 49, 59" ,  color : "wight" , marginTop : "12%"}} 
-                  placeholder="استان"  onChange={(e) => (e.target.value)?this.visablecity:""}
-                />
+              <Form.Select aria-label="Default select example"
+                style={{backgroundColor : "rgb(32, 49, 59" , color : "wight" , marginTop : "12%"}} 
+                onChange={(e) => (e.target.value)?this.visablecity:""}
+              >
+                <option style={{color : "wight"}}>استان</option>
+                <option value="1">آذربایجان شرقی</option>
+                <option value="2">آذربایجان غربی</option>
+                <option value="3">اردبیل</option>
+                <option value="4">اصفهان</option>
+                <option value="5">البرز</option>
+                <option value="6">ایلام</option>
+                <option value="7">بوشهر</option>
+                <option value="8">تهران</option>
+                <option value="9">چهارمحال و بختیاری</option>
+                <option value="10">خراسان جنوبی</option>
+                <option value="11">خراسان رضوی</option>
+                <option value="12">خراسان شمالی</option>
+                <option value="13">خوزستان</option>
+                <option value="14">زنجان</option>
+                <option value="15">سمنان</option>
+                <option value="16">سیستان و بلوچستان</option>
+                <option value="17">فارس</option>
+                <option value="18">قزوین</option>
+                <option value="19">قم</option>
+                <option value="20">کردستان</option>
+                <option value="21">کرمان</option>
+                <option value="22">کرمانشاه</option>
+                <option value="23">کهکیلویه و بویراحمد</option>
+                <option value="24">گلستان</option>
+                <option value="25">گیلان</option>
+                <option value="26">لرستان</option>
+                <option value="27">مازندران</option>
+                <option value="28">مرکزی</option>
+                <option value="29">هرمزگان</option>
+                <option value="30">همدان</option>
+                <option value="31">یزد</option>
+              </Form.Select>
               </Col>
               <Col>
-                <Form.Control 
+              <Form.Select aria-label="Default select example" 
                   style={{backgroundColor : "rgb(32, 49, 59" ,  color : "wight" , marginTop : "12%"}} 
-                  placeholder="شهر"   disabled={this.state.disable}
-                />
+                  disabled={this.state.disable}>
+                <option>شهر</option>
+                <option value="1">
+                </option>
+              </Form.Select>
               </Col>
               <Col>
                 <Form.Control 
